@@ -39,6 +39,7 @@ describe('BlockGrid', () => {
     blockGrid.blockClicked('event', testBlock2)
 
     expect(grid[3].length).toBe(9)
-   // expect(grid[3]).not.arrayContaining(testBlock2)
+    expect(grid[3]).not.toContain(testBlock2)
+
   });
 });
