@@ -40,6 +40,8 @@ class BlockGrid {
 
   blockClicked(e, block) {
     console.log(e, block);
+    console.log(this.grid[0].pop())
+    console.log(this.grid)
   }
 }
 

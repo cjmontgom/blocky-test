@@ -25,11 +25,12 @@ describe('BlockGrid', () => {
   });
 
   it('removes the block from its column when the block is clicked on', () => {
-    const grid = new BlockGrid(10, 10).grid;
+    const blockGrid = new BlockGrid(10, 10);
+    const grid = blockGrid.grid
 
     const testBlock = grid[0][0]
 
-    BlockGrid.prototype.blockClicked('event', testBlock)
+    blockGrid.blockClicked('event', testBlock)
 
     expect(grid[0].length).toBe(9)
   });
