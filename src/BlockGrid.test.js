@@ -33,5 +33,12 @@ describe('BlockGrid', () => {
     blockGrid.blockClicked('event', testBlock)
 
     expect(grid[0].length).toBe(9)
+
+    const testBlock2 = grid[3][4]
+
+    blockGrid.blockClicked('event', testBlock2)
+
+    expect(grid[3].length).toBe(9)
+   // expect(grid[3]).not.arrayContaining(testBlock2)
   });
 });
