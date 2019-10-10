@@ -40,8 +40,11 @@ class BlockGrid {
 
   blockClicked(e, block) {
     console.log(e, block);
-    console.log(this.grid[0].pop())
-    console.log(this.grid)
+    
+    for (let x = 0; x < this.width; x++) {
+      if ( this.grid[x].includes(block) ) this.grid[x].pop() 
+    }
+
   }
 }
 
