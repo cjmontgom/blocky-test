@@ -24,5 +24,13 @@ describe('BlockGrid', () => {
     });
   });
 
-  xit('good luck, have fun!', () => {});
+  it('removes the block from its column when the block is clicked on', () => {
+    const grid = new BlockGrid(10, 10).grid;
+
+    const testBlock = grid[0][0]
+
+    BlockGrid.prototype.blockClicked('event', testBlock)
+
+    expect(grid[0].length).toBe(9)
+  });
 });
