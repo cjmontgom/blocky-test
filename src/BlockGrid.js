@@ -40,9 +40,13 @@ class BlockGrid {
 
   blockClicked(e, block) {
     console.log(e, block);
-    
+
     for (let x = 0; x < this.width; x++) {
-      if ( this.grid[x].includes(block) ) this.grid[x].pop() 
+      const column = this.grid[x]
+      if ( column.includes(block) ) {
+        const index = column.indexOf(block)
+        column.splice(index, 1)
+      }
     }
 
   }
