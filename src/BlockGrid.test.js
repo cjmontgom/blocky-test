@@ -28,18 +28,11 @@ describe('BlockGrid', () => {
     const blockGrid = new BlockGrid(10, 10);
     const grid = blockGrid.grid
 
-    const testBlock = grid[0][0]
+    const testBlock = grid[3][4]
 
     blockGrid.blockClicked('event', testBlock)
 
-    expect(grid[0].length).toBe(9)
-
-    const testBlock2 = grid[3][4]
-
-    blockGrid.blockClicked('event', testBlock2)
-
     expect(grid[3].length).toBe(9)
-    expect(grid[3]).not.toContain(testBlock2)
-
+    expect(grid[3]).not.toContain(testBlock)
   });
 });
