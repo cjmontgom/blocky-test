@@ -11,4 +11,14 @@ describe('Block', () => {
       expect(COLOURS).toContain(block.colour);
     });
   });
+
+  it('can be marked as delete-able', () => {
+    const block = new Block(1,1)
+    expect(block.forDeletion).toBe(false)
+
+    block.markedForDelete()
+    expect(block.forDeletion).toBe(true)
+  })
+
+
 });

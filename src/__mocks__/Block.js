@@ -10,6 +10,14 @@ class Block {
         this.y = y;
         this.colour = colour(x, y);
     }
+
+    remove() {
+        document.getElementById(`block_${this.x}x${this.y}`).remove()  
+    }
+    
+    markedForDelete() {
+        this.forDeletion = true
+    }
 }
 
 export default Block

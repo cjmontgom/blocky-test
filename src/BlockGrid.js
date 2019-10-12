@@ -40,15 +40,32 @@ class BlockGrid {
   }
 
   blockClicked(e, block) {
-    for (let x = 0; x < this.width; x++) {
-      const column = this.grid[x]
-      if (column.includes(block)) this.deleteBlock(column, block)
-    }
+    // for (let x = 0; x < this.width; x++) {
+    //   const column = this.grid[x]
+    //   if (column.includes(block)) this.deleteBlock(column, block)
+    // }
+    block.markedForDelete()
 
     // get the co-ordinates of the block clicked 
+    let xAxis = block.x
+    let yAxis = block.y
+
+    let selectedBlockColour = block.colour
+    let column = this.grid[xAxis]
+    let row = this.grid[yAxis]
+
+    let blockAbove = column[yAxis + 1]
+    let blockBelow = column[yAxis - 1]
+    let blockLeft = row[xAxis - 1]
+    let blockRight = row[xAxis + 1]
+
 
     // until the block grid ends or the colour of the block is different
-    //   remove the blocks above ( y + 1 )
+    while (yAxis < this.height - 1 && selectedBlockColour === blockAbove.colour) {
+      blockAbove.markedForDelete()
+      yAxis ++ 
+    }
+    //   remove the blocks above ( y + 1 ) (SPLICE AND REMOVE FROM DOM)
     //   remove the blocks below  ( y - 1 )
     //   remove the blocks to the left ( x - 1 )
     //   remove the blocks above ( x + 1 )
@@ -62,6 +79,7 @@ class BlockGrid {
   deleteBlock(column, block) {
     const index = column.indexOf(block)
     column.splice(index, 1)
+    block.remove()
   }
 }
 
