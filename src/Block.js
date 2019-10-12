@@ -6,6 +6,10 @@ class Block {
     this.y = y;
     this.colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
   }
+
+  remove() {
+    document.getElementById(`block_${this.x}x${this.y}`).remove()  
+  }
 }
 
 export default Block;
