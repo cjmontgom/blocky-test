@@ -48,7 +48,6 @@ class BlockGrid {
         column.splice(index, 1)
       }
     }
-    document.getElementById(`block_${block.x}x${block.y}`).remove()  
   }
 }
 

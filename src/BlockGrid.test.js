@@ -29,7 +29,6 @@ describe('BlockGrid', () => {
   it('removes the block from its column when the block is clicked on', () => {
     const blockGrid = new BlockGrid(10, 10);
     const grid = blockGrid.grid;
-    console.log(JSON.stringify(blockGrid))
 
     const testBlock = grid[3][4];
 
@@ -41,8 +40,14 @@ describe('BlockGrid', () => {
 
   it('removes the blocks above which are the same colour as the block which is clicked on', () => {
     const blockGrid = new BlockGrid(4, 4);
+    const grid = blockGrid.grid;
+
     console.log(JSON.stringify(blockGrid))
-    
+
+    const testBlock = grid[0][0];
+    blockGrid.blockClicked('event', testBlock);
+
+    expect(grid[0].length).toBe(2)
   });
 });
 
