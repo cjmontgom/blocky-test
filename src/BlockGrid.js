@@ -17,23 +17,23 @@ class BlockGrid {
   }
 
   render(el = document.getElementById('gridEl')) {
-    for (let x = 0; x < this.width; x++) {
-      const id = 'col_' + x;
-      const colEl = document.createElement('div');
-      colEl.id = id;
-      colEl.className = 'col';
-      el.appendChild(colEl);
+    for (let x = 0; x < this.width; x++) {                      // for each column
+      const id = 'col_' + x;                                    // create a column id 
+      const colEl = document.createElement('div');              // create a new div and variable name for it
+      colEl.id = id;                                            // give the new div the id we made
+      colEl.className = 'col';                                  // give the new div a classname 
+      el.appendChild(colEl);                                    // append the new div to the main grid element
 
-      for (let y = this.height - 1; y >= 0; y--) {
-        const block = this.grid[x][y];
-        const id = `block_${x}x${y}`;
-        const blockEl = document.createElement('div');
+      for (let y = this.height - 1; y >= 0; y--) {              // for each row
+        const block = this.grid[x][y];                          // find the block from the grid made in constructor -- 0,0 0,1 0,2 etc... then 1,0 1,1 ...
+        const id = `block_${x}x${y}`;                           // create an id for block
+        const blockEl = document.createElement('div');          // create a new div for block
 
-        blockEl.id = id;
-        blockEl.className = 'block';
-        blockEl.style.background = block.colour;
-        blockEl.addEventListener('click', evt => this.blockClicked(evt, block));
-        colEl.appendChild(blockEl);
+        blockEl.id = id;                                        // assign block the id we created
+        blockEl.className = 'block';                            // assign block the classname block
+        blockEl.style.background = block.colour;                // set the colour of the div to the colour prop of the block
+        blockEl.addEventListener('click', evt => this.blockClicked(evt, block));    // ass event listener to block
+        colEl.appendChild(blockEl);                             // append block to column
       }
     }
   }
@@ -48,7 +48,7 @@ class BlockGrid {
         column.splice(index, 1)
       }
     }
-
+    document.getElementById(`block_${block.x}x${block.y}`).remove()  
   }
 }
 
