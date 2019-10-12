@@ -54,19 +54,14 @@ class BlockGrid {
     let column = this.grid[xAxis]
     let row = this.grid[yAxis]
 
-    let blockAbove = column[yAxis + 1]
-    let blockBelow = column[yAxis - 1]
     let blockLeft = row[xAxis - 1]
     let blockRight = row[xAxis + 1]
 
-
-    // until the block grid ends or the colour of the block is different
-    while (yAxis < this.height - 1 && selectedBlockColour === blockAbove.colour) {
-      blockAbove.markedForDelete()
-      yAxis ++ 
-    }
-
+    if (yAxis < this.height - 1) this.markBlocksAbove(yAxis, selectedBlockColour, column)
     
+    if (yAxis > 0) this.markBlocksBelow(yAxis, selectedBlockColour, column)
+ 
+
     //   remove the blocks above ( y + 1 ) (SPLICE AND REMOVE FROM DOM)
     //   remove the blocks below  ( y - 1 )
     //   remove the blocks to the left ( x - 1 )
@@ -83,6 +78,24 @@ class BlockGrid {
     column.splice(index, 1)
     block.remove()
   }
+
+  markBlocksAbove(yAxis, selectedBlockColour, column) {
+    let blockAbove = column[yAxis + 1]
+    while (yAxis < this.height - 1 && selectedBlockColour === blockAbove.colour) {
+      blockAbove.markedForDelete()
+      yAxis ++ 
+    }
+  }
+
+  markBlocksBelow(yAxis, selectedBlockColour, column) {
+    let blockBelow = column[yAxis - 1]
+    while (yAxis >= 0 && selectedBlockColour === blockBelow.colour) {
+      blockBelow.markedForDelete()
+      yAxis -- 
+      console.log(blockBelow)
+    }
+  }
+
 }
 
 export default BlockGrid;

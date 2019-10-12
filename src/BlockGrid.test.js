@@ -63,6 +63,7 @@ describe('BlockGrid', () => {
 
     expect(blockBelow.forDeletion).toBe(true)
     expect(blockThreeBelow.forDeletion).toBe(true)
+    console.log(grid)
   });
 });
 
