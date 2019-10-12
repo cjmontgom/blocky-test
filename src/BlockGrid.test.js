@@ -48,6 +48,8 @@ describe('BlockGrid', () => {
     blockGrid.blockClicked('event', testBlock);
 
     expect(grid[0].length).toBe(2)
+    console.log(JSON.stringify(blockGrid))
+
   });
 });
 

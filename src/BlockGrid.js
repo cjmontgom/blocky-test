@@ -1,4 +1,5 @@
 import Block from './Block';
+import { doesNotReject } from 'assert';
 
 class BlockGrid {
   constructor(width = 10, height = 10) {
@@ -39,15 +40,28 @@ class BlockGrid {
   }
 
   blockClicked(e, block) {
-    console.log(e, block);
-
     for (let x = 0; x < this.width; x++) {
       const column = this.grid[x]
-      if ( column.includes(block) ) {
-        const index = column.indexOf(block)
-        column.splice(index, 1)
-      }
+      if (column.includes(block)) this.deleteBlock(column, block)
     }
+
+    // get the co-ordinates of the block clicked 
+
+    // until the block grid ends or the colour of the block is different
+    //   remove the blocks above ( y + 1 )
+    //   remove the blocks below  ( y - 1 )
+    //   remove the blocks to the left ( x - 1 )
+    //   remove the blocks above ( x + 1 )
+
+
+    // for each column 
+    //   re-write the co ordinates of all blocks in correspondence to their element id within the column
+
+  }
+
+  deleteBlock(column, block) {
+    const index = column.indexOf(block)
+    column.splice(index, 1)
   }
 }
 
