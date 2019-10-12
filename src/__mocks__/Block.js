@@ -9,14 +9,15 @@ class Block {
         this.x = x;
         this.y = y;
         this.colour = colour(x, y);
+        this.forDeletion = false;
     }
 
     remove() {
-        document.getElementById(`block_${this.x}x${this.y}`).remove()  
+        document.getElementById(`block_${this.x}x${this.y}`).remove();
     }
     
     markedForDelete() {
-        this.forDeletion = true
+        this.forDeletion = true;
     }
 }
 

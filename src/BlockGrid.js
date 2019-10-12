@@ -65,6 +65,8 @@ class BlockGrid {
       blockAbove.markedForDelete()
       yAxis ++ 
     }
+
+    
     //   remove the blocks above ( y + 1 ) (SPLICE AND REMOVE FROM DOM)
     //   remove the blocks below  ( y - 1 )
     //   remove the blocks to the left ( x - 1 )

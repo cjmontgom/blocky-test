@@ -41,13 +41,28 @@ describe('BlockGrid', () => {
     const blockGrid = new BlockGrid(4, 4);
     const grid = blockGrid.grid;
 
-    console.log(JSON.stringify(blockGrid))
-
     const testBlock = grid[0][0];
+    const blockAbove = grid[0][1];
+    const blockTwoAbove = grid[0][2];
+
     blockGrid.blockClicked('event', testBlock);
 
-    console.log(JSON.stringify(blockGrid))
+    expect(blockAbove.forDeletion).toBe(true)
+    expect(blockTwoAbove.forDeletion).toBe(false)
+  });
 
+  it('marks the blocks below which are the same colour as the block which is clicked on', () => {
+    const blockGrid = new BlockGrid(6, 6);
+    const grid = blockGrid.grid;
+
+    const testBlock = grid[1][5];
+    const blockBelow = grid[1][4];
+    const blockThreeBelow = grid[1][2]
+
+    blockGrid.blockClicked('event', testBlock);
+
+    expect(blockBelow.forDeletion).toBe(true)
+    expect(blockThreeBelow.forDeletion).toBe(true)
   });
 });
 
