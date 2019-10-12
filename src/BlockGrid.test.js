@@ -1,6 +1,8 @@
 import BlockGrid from './BlockGrid';
 import Block from './Block';
 
+jest.mock('./Block');
+
 describe('BlockGrid', () => {
   it('fills a multidimensional array of Blocks as its grid, according to the given width and height', () => {
     const grid = new BlockGrid(10, 10).grid;
@@ -25,14 +27,24 @@ describe('BlockGrid', () => {
   });
 
   it('removes the block from its column when the block is clicked on', () => {
+
     const blockGrid = new BlockGrid(10, 10);
-    const grid = blockGrid.grid
+    const grid = blockGrid.grid;
+    console.log(JSON.stringify(blockGrid))
 
-    const testBlock = grid[3][4]
+    const testBlock = grid[3][4];
 
-    blockGrid.blockClicked('event', testBlock)
+    blockGrid.blockClicked('event', testBlock);
 
-    expect(grid[3].length).toBe(9)
-    expect(grid[3]).not.toContain(testBlock)
+    expect(grid[3].length).toBe(9);
+    expect(grid[3]).not.toContain(testBlock);
+  });
+
+  it('removes the blocks above which are the same colour as the block which is clicked on', () => {
+    const blockGrid = new BlockGrid(4, 4);
+    console.log(JSON.stringify(blockGrid))
   });
 });
+
+
+
