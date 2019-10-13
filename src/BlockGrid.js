@@ -61,12 +61,10 @@ class BlockGrid {
     
     if (yAxis > 0) this.markBlocksBelow(yAxis, selectedBlockColour, column)
  
-
-    //   remove the blocks above ( y + 1 ) (SPLICE AND REMOVE FROM DOM)
-    //   remove the blocks below  ( y - 1 )
     //   remove the blocks to the left ( x - 1 )
-    //   remove the blocks above ( x + 1 )
+    //   remove the blocks to the right ( x + 1 )
 
+    // delete the blocks marked as for deletion
 
     // for each column 
     //   re-write the co ordinates of all blocks in correspondence to their element id within the column
@@ -81,9 +79,9 @@ class BlockGrid {
 
   markBlocksAbove(yAxis, selectedBlockColour, column) {
     let blockAbove = column[yAxis + 1]
-    while (yAxis < this.height - 1 && selectedBlockColour === blockAbove.colour) {
+    while (yAxis < this.height && selectedBlockColour === blockAbove.colour) {
       blockAbove.markedForDelete()
-      yAxis ++ 
+      blockAbove = column[yAxis ++]
     }
   }
 
@@ -91,8 +89,7 @@ class BlockGrid {
     let blockBelow = column[yAxis - 1]
     while (yAxis >= 0 && selectedBlockColour === blockBelow.colour) {
       blockBelow.markedForDelete()
-      yAxis -- 
-      console.log(blockBelow)
+      blockBelow = column[yAxis --]
     }
   }
 
