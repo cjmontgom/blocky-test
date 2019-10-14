@@ -81,7 +81,7 @@ class BlockGrid {
 
   markBlocksAbove(yAxis, selectedBlockColour, column) {
     let blockAbove = column[yAxis + 1]
-    while (yAxis < this.height && selectedBlockColour === blockAbove.colour) {
+    while (yAxis <= this.height && selectedBlockColour === blockAbove.colour) {
       blockAbove.markedForDelete()
       blockAbove = column[yAxis ++]
     }
@@ -89,7 +89,7 @@ class BlockGrid {
 
   markBlocksBelow(yAxis, selectedBlockColour, column) {
     let blockBelow = column[yAxis - 1]
-    while (yAxis >= 0 && selectedBlockColour === blockBelow.colour) {
+    while (yAxis >= -1 && selectedBlockColour === blockBelow.colour) {
       blockBelow.markedForDelete()
       blockBelow = column[yAxis --]
     }
