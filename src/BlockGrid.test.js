@@ -64,6 +64,24 @@ describe('BlockGrid', () => {
     expect(blockBelow.forDeletion).toBe(true)
     expect(blockThreeBelow.forDeletion).toBe(true)
   });
+
+  it('marks the blocks to the left which are the same colour as the block clicked on', () => {
+    const blockGrid = new BlockGrid(6, 6);
+    const grid = blockGrid.grid;
+
+    console.log(grid);
+    
+    const testBlock = grid[1][2];
+    const blockNextDoor = grid[2][2];
+    const blockAtEndOfRow = grid[5][2]
+
+    blockGrid.blockClicked('event', testBlock);
+
+    expect(testBlock.forDeletion).toBe(true)
+    expect(blockNextDoor.forDeletion).toBe(true)
+    expect(blockAtEndOfRow.forDeletion).toBe(true)
+  })
+
 });
 
 
