@@ -64,8 +64,6 @@ class BlockGrid {
  
     if (xAxis < this.width - 1) this.markBlocksToTheRight(xAxis, yAxis, selectedBlockColour)
 
-    //   remove the blocks to the left ( x - 1 )
-    //   remove the blocks to the right ( x + 1 )
 
     // delete the blocks marked as for deletion
 

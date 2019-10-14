@@ -65,13 +65,28 @@ describe('BlockGrid', () => {
     expect(blockThreeBelow.forDeletion).toBe(true)
   });
 
-  it('marks the blocks to the left which are the same colour as the block clicked on', () => {
+  it('marks the blocks to the right which are the same colour as the block clicked on', () => {
     const blockGrid = new BlockGrid(6, 6);
     const grid = blockGrid.grid;
     
     const testBlock = grid[1][2];
     const blockNextDoor = grid[2][2];
     const blockAtEndOfRow = grid[5][2]
+
+    blockGrid.blockClicked('event', testBlock);
+
+    expect(testBlock.forDeletion).toBe(true)
+    expect(blockNextDoor.forDeletion).toBe(true)
+    expect(blockAtEndOfRow.forDeletion).toBe(true)
+  })
+
+  it('marks the blocks to the left which are the same colour as the block clicked on', () => {
+    const blockGrid = new BlockGrid(6, 6);
+    const grid = blockGrid.grid;
+    
+    const testBlock = grid[4][2];
+    const blockNextDoor = grid[3][2];
+    const blockAtEndOfRow = grid[0][2]
 
     blockGrid.blockClicked('event', testBlock);
 
