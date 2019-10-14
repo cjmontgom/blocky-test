@@ -64,6 +64,7 @@ class BlockGrid {
  
     if (xAxis < this.width - 1) this.markBlocksToTheRight(xAxis, yAxis, selectedBlockColour)
 
+    if (xAxis > 0) this.markBlocksToTheLeft(xAxis, yAxis, selectedBlockColour)
 
     // delete the blocks marked as for deletion
 
@@ -103,6 +104,18 @@ class BlockGrid {
       nextColumn ++
       blockToTheRight = this.grid[nextColumn][yAxis]
       blockToTheRight.markedForDelete()
+    }
+  }
+
+  markBlocksToTheLeft(xAxis, yAxis, selectedBlockColour) {
+    let nextColumn = xAxis - 1
+    let blockToTheLeft = this.grid[nextColumn][yAxis]
+    blockToTheLeft.markedForDelete()
+
+    while (nextColumn > 0 && selectedBlockColour === blockToTheLeft.colour) {
+      nextColumn --
+      blockToTheLeft = this.grid[nextColumn][yAxis]
+      blockToTheLeft.markedForDelete()
     }
   }
 

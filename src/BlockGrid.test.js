@@ -57,12 +57,26 @@ describe('BlockGrid', () => {
 
     const testBlock = grid[1][5];
     const blockBelow = grid[1][4];
-    const blockThreeBelow = grid[1][2]
+    const blockThreeBelow = grid[1][2];
 
     blockGrid.blockClicked('event', testBlock);
 
     expect(blockBelow.forDeletion).toBe(true)
     expect(blockThreeBelow.forDeletion).toBe(true)
+  });
+
+  it('marks the blocks at the ends of the column which are the same colour as the block which is clicked on, when every block in between is also the same colour', () => {
+    const blockGrid = new BlockGrid(6, 6);
+    const grid = blockGrid.grid;
+
+    const testBlock = grid[5][3];
+    const topBlock = grid[5][5];
+    const bottomBlock = grid[5][0];
+
+    blockGrid.blockClicked('event', testBlock);
+
+    expect(topBlock.forDeletion).toBe(true)
+    expect(bottomBlock.forDeletion).toBe(true)
   });
 
   it('marks the blocks to the right which are the same colour as the block clicked on', () => {
