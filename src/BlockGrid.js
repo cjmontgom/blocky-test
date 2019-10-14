@@ -52,7 +52,8 @@ class BlockGrid {
 
     let selectedBlockColour = block.colour
     let column = this.grid[xAxis]
-    let row = this.grid[yAxis]
+    let nextColumn = this.grid[xAxis + 1]
+    let row = yAxis
 
     let blockLeft = row[xAxis - 1]
     let blockRight = row[xAxis + 1]
@@ -61,6 +62,8 @@ class BlockGrid {
     
     if (yAxis > 0) this.markBlocksBelow(yAxis, selectedBlockColour, column)
  
+    if (xAxis < this.width - 1) this.markBlocksToTheRight(xAxis, yAxis, selectedBlockColour)
+
     //   remove the blocks to the left ( x - 1 )
     //   remove the blocks to the right ( x + 1 )
 
@@ -90,6 +93,18 @@ class BlockGrid {
     while (yAxis >= 0 && selectedBlockColour === blockBelow.colour) {
       blockBelow.markedForDelete()
       blockBelow = column[yAxis --]
+    }
+  }
+
+  markBlocksToTheRight(xAxis, yAxis, selectedBlockColour) {
+    let nextColumn = xAxis + 1
+    let blockToTheRight = this.grid[nextColumn][yAxis]
+    blockToTheRight.markedForDelete()
+
+    while (nextColumn < this.width - 1 && selectedBlockColour === blockToTheRight.colour) {
+      nextColumn ++
+      blockToTheRight = this.grid[nextColumn][yAxis]
+      blockToTheRight.markedForDelete()
     }
   }
 

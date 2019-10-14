@@ -68,8 +68,6 @@ describe('BlockGrid', () => {
   it('marks the blocks to the left which are the same colour as the block clicked on', () => {
     const blockGrid = new BlockGrid(6, 6);
     const grid = blockGrid.grid;
-
-    console.log(grid);
     
     const testBlock = grid[1][2];
     const blockNextDoor = grid[2][2];
