@@ -37,78 +37,22 @@ describe('BlockGrid', () => {
     expect(testBlock.forDeletion).toBe(true);
   });
 
-  it('marks the blocks above which are the same colour as the block which is clicked on', () => {
+  it('marks all blocks of the same colour that are connected to the target element', () => {
     const blockGrid = new BlockGrid(4, 4);
     const grid = blockGrid.grid;
 
     const testBlock = grid[0][0];
-    const blockAbove = grid[0][1];
-    const blockTwoAbove = grid[0][2];
+
+    const blockAbove = grid[0][1]; // same colour
+    const blockTwoAbove = grid[0][2]; // different colour
+    const blockDiagonal = grid[1][1]; // same colour, not directly touching
 
     blockGrid.blockClicked('event', testBlock);
 
     expect(blockAbove.forDeletion).toBe(true)
+    expect(blockDiagonal.forDeletion).toBe(true)
     expect(blockTwoAbove.forDeletion).toBe(false)
   });
-
-  it('marks the blocks below which are the same colour as the block which is clicked on', () => {
-    const blockGrid = new BlockGrid(6, 6);
-    const grid = blockGrid.grid;
-
-    const testBlock = grid[1][5];
-    const blockBelow = grid[1][4];
-    const blockThreeBelow = grid[1][2];
-
-    blockGrid.blockClicked('event', testBlock);
-
-    expect(blockBelow.forDeletion).toBe(true)
-    expect(blockThreeBelow.forDeletion).toBe(true)
-  });
-
-  it('marks the blocks at the ends of the column which are the same colour as the block which is clicked on, when every block in between is also the same colour', () => {
-    const blockGrid = new BlockGrid(6, 6);
-    const grid = blockGrid.grid;
-
-    const testBlock = grid[5][3];
-    const topBlock = grid[5][5];
-    const bottomBlock = grid[5][0];
-
-    blockGrid.blockClicked('event', testBlock);
-
-    expect(topBlock.forDeletion).toBe(true)
-    expect(bottomBlock.forDeletion).toBe(true)
-  });
-
-  it('marks the blocks to the right which are the same colour as the block clicked on', () => {
-    const blockGrid = new BlockGrid(6, 6);
-    const grid = blockGrid.grid;
-    
-    const testBlock = grid[1][2];
-    const blockNextDoor = grid[2][2];
-    const blockAtEndOfRow = grid[5][2]
-
-    blockGrid.blockClicked('event', testBlock);
-
-    expect(testBlock.forDeletion).toBe(true)
-    expect(blockNextDoor.forDeletion).toBe(true)
-    expect(blockAtEndOfRow.forDeletion).toBe(true)
-  })
-
-  it('marks the blocks to the left which are the same colour as the block clicked on', () => {
-    const blockGrid = new BlockGrid(6, 6);
-    const grid = blockGrid.grid;
-    
-    const testBlock = grid[4][2];
-    const blockNextDoor = grid[3][2];
-    const blockAtEndOfRow = grid[0][2]
-
-    blockGrid.blockClicked('event', testBlock);
-
-    expect(testBlock.forDeletion).toBe(true)
-    expect(blockNextDoor.forDeletion).toBe(true)
-    expect(blockAtEndOfRow.forDeletion).toBe(true)
-  })
-
 });
 
 

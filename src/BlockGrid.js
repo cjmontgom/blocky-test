@@ -40,83 +40,27 @@ class BlockGrid {
   }
 
   blockClicked(e, block) {
-    // for (let x = 0; x < this.width; x++) {
-    //   const column = this.grid[x]
-    //   if (column.includes(block)) this.deleteBlock(column, block)
-    // }
+ 
     block.markedForDelete()
 
     // get the co-ordinates of the block clicked 
-    let xAxis = block.x
-    let yAxis = block.y
+    let x = block.x
+    let y = block.y
 
     let selectedBlockColour = block.colour
-    let column = this.grid[xAxis]
-    let nextColumn = this.grid[xAxis + 1]
-    let row = yAxis
+    let column = this.grid[x]
+    let nextColumn = this.grid[x + 1]
+    let row = y
 
-    let blockLeft = row[xAxis - 1]
-    let blockRight = row[xAxis + 1]
+    let blockLeft = row[x - 1]
+    let blockRight = row[x + 1]
 
-    if (yAxis < this.height - 1) this.markBlocksAbove(yAxis, selectedBlockColour, column)
-    
-    if (yAxis > 0) this.markBlocksBelow(yAxis, selectedBlockColour, column)
- 
-    if (xAxis < this.width - 1) this.markBlocksToTheRight(xAxis, yAxis, selectedBlockColour)
-
-    if (xAxis > 0) this.markBlocksToTheLeft(xAxis, yAxis, selectedBlockColour)
 
     // delete the blocks marked as for deletion
 
     // for each column 
     //   re-write the co ordinates of all blocks in correspondence to their element id within the column
 
-  }
-
-  deleteBlock(column, block) {
-    const index = column.indexOf(block)
-    column.splice(index, 1)
-    block.remove()
-  }
-
-  markBlocksAbove(yAxis, selectedBlockColour, column) {
-    let blockAbove = column[yAxis + 1]
-    while (yAxis <= this.height && selectedBlockColour === blockAbove.colour) {
-      blockAbove.markedForDelete()
-      blockAbove = column[yAxis ++]
-    }
-  }
-
-  markBlocksBelow(yAxis, selectedBlockColour, column) {
-    let blockBelow = column[yAxis - 1]
-    while (yAxis >= -1 && selectedBlockColour === blockBelow.colour) {
-      blockBelow.markedForDelete()
-      blockBelow = column[yAxis --]
-    }
-  }
-
-  markBlocksToTheRight(xAxis, yAxis, selectedBlockColour) {
-    let nextColumn = xAxis + 1
-    let blockToTheRight = this.grid[nextColumn][yAxis]
-    blockToTheRight.markedForDelete()
-
-    while (nextColumn < this.width - 1 && selectedBlockColour === blockToTheRight.colour) {
-      nextColumn ++
-      blockToTheRight = this.grid[nextColumn][yAxis]
-      blockToTheRight.markedForDelete()
-    }
-  }
-
-  markBlocksToTheLeft(xAxis, yAxis, selectedBlockColour) {
-    let nextColumn = xAxis - 1
-    let blockToTheLeft = this.grid[nextColumn][yAxis]
-    blockToTheLeft.markedForDelete()
-
-    while (nextColumn > 0 && selectedBlockColour === blockToTheLeft.colour) {
-      nextColumn --
-      blockToTheLeft = this.grid[nextColumn][yAxis]
-      blockToTheLeft.markedForDelete()
-    }
   }
 
 }
