@@ -20,6 +20,12 @@ describe('Block', () => {
     expect(block.forDeletion).toBe(true)
   })
 
+  it('can return its own co-ordinates as an array property', () => {
+    const block = new Block(3,8)
+
+    expect(block.coOrdinates).toEqual([3,8])
+  })
+
   it('can have its co-ordinates updated', () => {
     const block = new Block(1,1)
     expect(block.x).toBe(1)
@@ -27,12 +33,7 @@ describe('Block', () => {
     block.updateCoOrdinates(2,6)
     expect(block.x).toBe(2)
     expect(block.y).toBe(6)
-  })
-
-  it('can return its own co-ordinates as an array property', () => {
-    const block = new Block(3,8)
-
-    expect(block.coOrdinates).toEqual([3,8])
+    expect(block.coOrdinates).toEqual([2,6])
   })
 
 });

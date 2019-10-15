@@ -20,6 +20,7 @@ class Block {
   updateCoOrdinates(x, y) {
     this.x = x
     this.y = y
+    this.coOrdinates = [x, y]
   }
 }
 

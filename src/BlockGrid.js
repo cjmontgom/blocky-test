@@ -2,6 +2,7 @@ import Block from './Block';
 import { doesNotReject } from 'assert';
 
 class BlockGrid {
+
   constructor(width = 10, height = 10) {
     this.width = width;
     this.height = height;
@@ -40,7 +41,6 @@ class BlockGrid {
   }
 
   blockClicked(e, block) {
- 
     block.markedForDelete()
 
     // get the co-ordinates of the block clicked 
@@ -52,9 +52,7 @@ class BlockGrid {
 
     this.removeMarkedBlocks()
 
-    // for each column 
-    //   re-write the co ordinates of all blocks in correspondence to their element id within the column
-
+    this.updateCoOrdinates()
   }
 
   markBlocks(x, y, colour) {
@@ -74,6 +72,16 @@ class BlockGrid {
   removeMarkedBlocks() {
     for (let column = 0; column < this.width; column++) {
       this.grid[column] = this.grid[column].filter(block => block.forDeletion === false)
+    }
+  }
+
+  updateCoOrdinates() {
+    for (let x = 0; x < this.width; x++) {    
+      let column = this.grid[x] 
+      column.forEach( block => {
+        const y = column.indexOf(block)
+        block.updateCoOrdinates(x,y) 
+      })
     }
   }
 

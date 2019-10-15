@@ -80,9 +80,9 @@ describe('BlockGrid', () => {
 
     blockGrid.blockClicked('event', testBlock);
 
-    expect(grid[0][0].coOrdinates).toEqual([0,0])
-    expect(grid[1][0].coOrdinates).toEqual([1,0])
-    expect(grid[1][1].coOrdinates).toEqual([1,1])
+    expect(grid[0][0].y).toEqual(0)
+    expect(grid[1][0].y).toEqual(0)
+    expect(grid[1][1].y).toEqual(1)
   });
 
 });
