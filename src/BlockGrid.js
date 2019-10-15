@@ -50,7 +50,7 @@ class BlockGrid {
     
     this.markBlocks(x, y, selectedBlockColour)
 
-    // delete the blocks marked as for deletion
+    this.removeMarkedBlocks()
 
     // for each column 
     //   re-write the co ordinates of all blocks in correspondence to their element id within the column
@@ -69,6 +69,12 @@ class BlockGrid {
         this.blockClicked('event', block)
       }
     })
+  }
+
+  removeMarkedBlocks() {
+    for (let column = 0; column < this.width; column++) {
+      this.grid[column] = this.grid[column].filter(block => block.forDeletion === false)
+    }
   }
 
 }
