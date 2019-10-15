@@ -10,6 +10,7 @@ class Block {
         this.y = y;
         this.colour = colour(x, y);
         this.forDeletion = false;
+        this.coOrdinates = [x, y]
     }
 
     remove() {

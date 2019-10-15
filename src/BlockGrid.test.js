@@ -72,8 +72,17 @@ describe('BlockGrid', () => {
     expect(grid[1]).not.toContain(blockDiagonal);
   });
 
-  xit('re-assigns the co-ordinates of all blocks in correspondence to their element id within the column', () => {
+  it('re-assigns the co-ordinates of all blocks in correspondence to their element id within the column', () => {
+    const blockGrid = new BlockGrid(4, 4);
+    const grid = blockGrid.grid;
 
+    const testBlock = grid[0][0];
+
+    blockGrid.blockClicked('event', testBlock);
+
+    expect(grid[0][0].coOrdinates).toEqual([0,0])
+    expect(grid[1][0].coOrdinates).toEqual([1,0])
+    expect(grid[1][1].coOrdinates).toEqual([1,1])
   });
 
 });
