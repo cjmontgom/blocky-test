@@ -26,16 +26,16 @@ describe('BlockGrid', () => {
     });
   });
 
-  it('marks the block as deletable when the block is clicked on', () => {
-    const blockGrid = new BlockGrid(10, 10);
-    const grid = blockGrid.grid;
+  // it('marks the block as deletable when the block is clicked on', () => {
+  //   const blockGrid = new BlockGrid(10, 10);
+  //   const grid = blockGrid.grid;
 
-    const testBlock = grid[3][4];
+  //   const testBlock = grid[3][4];
 
-    blockGrid.blockClicked('event', testBlock);
+  //   blockGrid.blockClicked('event', testBlock);
 
-    expect(testBlock.forDeletion).toBe(true);
-  });
+  //   expect(testBlock.forDeletion).toBe(true);
+  // });
 
   it('marks all blocks of the same colour that are connected to the target element', () => {
     const blockGrid = new BlockGrid(4, 4);

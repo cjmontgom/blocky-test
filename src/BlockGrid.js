@@ -46,21 +46,29 @@ class BlockGrid {
     // get the co-ordinates of the block clicked 
     let x = block.x
     let y = block.y
-
     let selectedBlockColour = block.colour
-    let column = this.grid[x]
-    let nextColumn = this.grid[x + 1]
-    let row = y
-
-    let blockLeft = row[x - 1]
-    let blockRight = row[x + 1]
-
+    
+    this.markBlocks(x, y, selectedBlockColour)
 
     // delete the blocks marked as for deletion
 
     // for each column 
     //   re-write the co ordinates of all blocks in correspondence to their element id within the column
 
+  }
+
+  markBlocks(x, y, colour) {
+    const blocksTouching = [
+      this.grid[x][y-1],
+      this.grid[x][y+1],
+      this.grid[x-1] ? this.grid[x-1][y] : undefined,
+      this.grid[x+1] ? this.grid[x+1][y] : undefined
+    ]
+    blocksTouching.forEach( block => {
+      if (block && block.forDeletion === false && block.colour === colour) {
+        this.blockClicked('event', block)
+      }
+    })
   }
 
 }
