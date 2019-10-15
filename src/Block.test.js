@@ -29,4 +29,10 @@ describe('Block', () => {
     expect(block.y).toBe(6)
   })
 
+  it('can return its own co-ordinates as an array property', () => {
+    const block = new Block(3,8)
+
+    expect(block.coOrdinates).toEqual([3,8])
+  })
+
 });

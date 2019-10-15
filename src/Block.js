@@ -6,6 +6,7 @@ class Block {
     this.y = y;
     this.colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
     this.forDeletion = false
+    this.coOrdinates = [x, y]
   }
 
   remove() {
