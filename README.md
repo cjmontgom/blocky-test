@@ -1,5 +1,11 @@
 # Blocky Puzzle
 
+## Notes from Chloe
+
+Having reached the point where I mark each block of the same colour which stretches to the left, right, above, and below- I realised that Tetris also deletes blocks which aren't in line with the selected block, so my approach was missing a fundamental rule of the game! 
+I am first and foremost dissapointed with myself that I forgot how Tetris works, becasue I used to love Tetris. Secondly, this means scrapping alot of my work and taking a new approach. 
+It makes much more sense now to find the blocks immediately touching the selected block with the same colour (using its x and y axis). Then use recursion to do the same process with every block of the same colour which is touching, thereby spreading across the entire grid, not just in lines from the selected block. 
+
 ## To get started
 
 You will need a recent version of [Node]. If you do not have it installed already, we find [nvm] to be a handy script to install and even juggle between versions of Node without too much hassle.
