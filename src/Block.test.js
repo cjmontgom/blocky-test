@@ -20,5 +20,13 @@ describe('Block', () => {
     expect(block.forDeletion).toBe(true)
   })
 
+  it('can have its co-ordinates updated', () => {
+    const block = new Block(1,1)
+    expect(block.x).toBe(1)
+
+    block.updateCoOrdinates(2,6)
+    expect(block.x).toBe(2)
+    expect(block.y).toBe(6)
+  })
 
 });

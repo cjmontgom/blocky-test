@@ -71,6 +71,11 @@ describe('BlockGrid', () => {
     expect(grid[0]).toContain(blockTwoAbove)
     expect(grid[1]).not.toContain(blockDiagonal);
   });
+
+  xit('re-assigns the co-ordinates of all blocks in correspondence to their element id within the column', () => {
+
+  });
+
 });
 
 

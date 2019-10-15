@@ -19,6 +19,11 @@ class Block {
     markedForDelete() {
         this.forDeletion = true;
     }
+
+    updateCoOrdinates(x, y) {
+        this.x = x
+        this.y = y
+    }
 }
 
 export default Block
